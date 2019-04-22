@@ -2,6 +2,7 @@ const express=require("express");
 const hbs=require("hbs"); //Handlebars
 const fs=require("fs");
 
+let port=process.env.PORT||3001;
 let app=express();
 hbs.registerPartials(__dirname + "/views/partails");
 hbs.registerHelper("getCurrentYear",()=>{
@@ -46,6 +47,6 @@ app.get("/bad",(req,res)=>{
     res.send({error:"Unable to send request to server"});
 });
 
-app.listen(3001,()=>{
-    console.log("ManazeServer is now running on http://localhost:5000")
+app.listen(port,()=>{
+    console.log(`ManazeServer is now running on http://localhost:${port}`)
 });
